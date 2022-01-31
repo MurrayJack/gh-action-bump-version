@@ -61,16 +61,7 @@ const workspace = process.env.GITHUB_WORKSPACE;
   // get the pre-release prefix specified in action
   let preid = process.env.INPUT_PREID;
 
-  // case: if wording for MAJOR found
-  if (
-    messages.some(
-      (message) => /^([a-zA-Z]+)(\(.+\))?(\!)\:/.test(message) || majorWords.some((word) => message.includes(word)),
-    )
-  ) {
-    version = 'major';
-  }
-  // case: if wording for MINOR found
-  else if (messages.some((message) => minorWords.some((word) => message.includes(word)))) {
+  if (messages.some((message) => minorWords.some((word) => message.includes(word)))) {
     version = 'minor';
   }
   // case: if wording for PATCH found
